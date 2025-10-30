@@ -6,36 +6,17 @@ import Skills from '@/components/react/skills'
 import { buttonVariants } from '@/components/ui/button'
 import Logo from '@/components/ui/logo'
 import Layout from '@/layouts/Layout.astro'
-import { getRecentPosts } from '@/lib/data-utils'
+import { getRecentPosts, getAllProjects } from '@/lib/data-utils'
 import { SITE } from '@/consts'
-
-import Breadcrumbs from '@/components/Breadcrumbs.astro'
-
 import BuyMeCoffee from '@/components/react/buymeacoffe'
-import PaginationComponent from '@/components/ui/pagination'
-
-import { getAllProjects } from '@/lib/data-utils'
-import type { PaginateFunction } from 'astro'
 import { Icon } from 'astro-icon/components'
 import { Image } from 'astro:assets'
 
-export async function getStaticPaths({
-  paginate,
-}: {
-  paginate: PaginateFunction
-}) {
-  const allProjects = await getAllProjects()
-  return paginate(allProjects, { pageSize: 6 })
-}
-
-const { page } = Astro.props
-const projectData = await getAllProjects()
-
-
-
-
 const blog = await getRecentPosts(3)
 const currentUrl = Astro.url;
+// Get projects for homepage (limiting to 6)
+const allProjects = await getAllProjects()
+const projectData = allProjects.slice(0, 6)
 ---
 
 <Layout canonicalUrl={currentUrl}>
@@ -137,7 +118,9 @@ const currentUrl = Astro.url;
       </div>
     </section>
 
-    <!-- <section class="flex flex-col gap-y-4" aria-labelledby="latest-posts-title" role="region">
+    <!-- BLOG SECTION - COMMENTED OUT -->
+    <!-- 
+    <section class="flex flex-col gap-y-4" aria-labelledby="latest-posts-title" role="region">
       <div class="relative" aria-labelledby="latest-posts-title">
         <h2
           id="latest-posts-title"
@@ -172,31 +155,33 @@ const currentUrl = Astro.url;
         </Link>
       </div>
     </section>
-  </section> -->
+    -->
 
-  <section class="max-screen mt-12 px-4 md:px-6">
+  </section>
+
+  <!-- PROJECTS SECTION - NEW -->
+  <section class="max-screen mt-12 px-4 md:px-6 mb-16">
     <div class="flex flex-row items-center justify-between mb-8">
       <div>
-          <div class="flex w-fit items-center gap-2 text-primary">
-            <Icon name="lucide:star" class="h-4 w-4 text-yellow-500 animate-pulse" />
-            <p class="shimmer word-spacing font-mono text-sm uppercase leading-none text-primary">My Work</p>
-          </div>
-          <h2
-            id="skills-title"
-            class="font-custom text-foreground text-4xl font-bold mt-2"
-          >
-            Projects
-          </h2>
-          <p class="text-muted-foreground text-md max-w-2xl mt-3">
-            Here are some of the projects I have worked on. I am always looking for new challenges and opportunities to learn and grow as a developer. If you have a project in mind, feel free to reach out!
-          </p>
+        <div class="flex w-fit items-center gap-2 text-primary">
+          <Icon name="lucide:star" class="h-4 w-4 text-yellow-500 animate-pulse" />
+          <p class="shimmer word-spacing font-mono text-sm uppercase leading-none text-primary">My Work</p>
+        </div>
+        <h2
+          class="font-custom text-foreground text-4xl font-bold mt-2"
+        >
+          Projects
+        </h2>
+        <p class="text-muted-foreground text-md max-w-2xl mt-3">
+          Here are some of the projects I have worked on. I am always looking for new challenges and opportunities to learn and grow as a developer. If you have a project in mind, feel free to reach out!
+        </p>
       </div>
       <div>
         <BuyMeCoffee />
       </div>  
     </div>
   
-    <div class="mt-12 grid grid-cols-1 py-sm sm:grid-cols-2 gap-x-8 mb-16 gap-y-8">
+    <div class="mt-12 grid grid-cols-1 py-sm sm:grid-cols-2 gap-x-8 mb-8 gap-y-8">
       {projectData.map((project, _) => (
         <div
           class="group h-full w-full transition-all duration-300 hover:translate-y-[-4px] even:sm:mt-14"
@@ -244,13 +229,16 @@ const currentUrl = Astro.url;
       ))}
     </div>
 
-    <div class="mt-16 mb-16">
-      <PaginationComponent
-        currentPage={page.currentPage}
-        totalPages={page.lastPage}
-        baseUrl="/projects/"
-        client:load
-      />
+    <div class="flex justify-center" aria-label="ver todos los proyectos">
+      <Link
+        href="/projects"
+        class={buttonVariants({ variant: 'ghost' }) + ' group'}
+      >
+        Ver todos los proyectos <span
+          class="ml-1.5 transition-transform group-hover:translate-x-1"
+          >&rarr;</span
+        >
+      </Link>
     </div>
   </section>
 
