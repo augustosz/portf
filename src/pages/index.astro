@@ -38,6 +38,7 @@ const currentUrl = Astro.url;
           </span>
           <span class="flex items-center gap-1">
             <span class="text-foreground text-sm font-medium"> {SITE.location}</span>
+            <!-- Argentina Flag SVG(teamoargentinalinda) -->
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 51.18 38.4"
@@ -47,13 +48,43 @@ const currentUrl = Astro.url;
               focusable="false"
               aria-labelledby="title"
             >
+              <!-- Top light blue stripe -->
               <path
-                d="M17.75 0v38.4H3.03C1.37 38.4 0 37.04 0 35.37V3.03C0 1.36 1.37 0 3.03 0h14.72z"
-                fill="#002b7f"></path>
-              <path fill="#fcd116" d="M37.45 0v38.4h-19.7V0h19.7z"></path>
+                d="M3.03 0h45.12c1.67 0 3.03 1.36 3.03 3.03v9.77H0V3.03C0 1.36 1.37 0 3.03 0z"
+                fill="#74ACDF"
+              />
+              
+              <!-- Middle white stripe -->
               <path
-                d="M37.45 38.4V0h14.72c1.67 0 3.03 1.36 3.03 3.03v32.33c0 1.67-1.37 3.03-3.03 3.03H37.45v.01z"
-                fill="#ce1126"></path>
+                d="M0 12.8h51.18v12.8H0z"
+                fill="#FFFFFF"
+              />
+              
+              <!-- Bottom light blue stripe -->
+              <path
+                d="M0 25.6h51.18v9.77c0 1.67-1.37 3.03-3.03 3.03H3.03C1.37 38.4 0 37.04 0 35.37V25.6z"
+                fill="#74ACDF"
+              />
+              
+              <!-- Sun of May (Sol de Mayo) -->
+              <g transform="translate(25.59, 19.2)">
+                <circle r="5" fill="#F6B40E" stroke="#85340A" stroke-width="0.2"/>
+                
+                <!-- Sun rays -->
+                <path d="M 0,-5 L 0,-8" stroke="#F6B40E" stroke-width="0.5" fill="none"/>
+                <path d="M 0,-5 L 0,-8" stroke="#F6B40E" stroke-width="0.5" fill="none" transform="rotate(45)"/>
+                <path d="M 0,-5 L 0,-8" stroke="#F6B40E" stroke-width="0.5" fill="none" transform="rotate(90)"/>
+                <path d="M 0,-5 L 0,-8" stroke="#F6B40E" stroke-width="0.5" fill="none" transform="rotate(135)"/>
+                <path d="M 0,-5 L 0,-8" stroke="#F6B40E" stroke-width="0.5" fill="none" transform="rotate(180)"/>
+                <path d="M 0,-5 L 0,-8" stroke="#F6B40E" stroke-width="0.5" fill="none" transform="rotate(225)"/>
+                <path d="M 0,-5 L 0,-8" stroke="#F6B40E" stroke-width="0.5" fill="none" transform="rotate(270)"/>
+                <path d="M 0,-5 L 0,-8" stroke="#F6B40E" stroke-width="0.5" fill="none" transform="rotate(315)"/>
+                
+                <!-- Face -->
+                <circle cx="-1.5" cy="-1" r="0.4" fill="#85340A"/>
+                <circle cx="1.5" cy="-1" r="0.4" fill="#85340A"/>
+                <path d="M -2,1 Q 0,2 2,1" stroke="#85340A" stroke-width="0.3" fill="none"/>
+              </g>
             </svg>
           </span>
         </div>
