@@ -1,14 +1,14 @@
 import type { IconMap, SocialLink, Site } from '@/types'
 
 export const SITE: Site = {
-  title: 'Cojocaru David',
+  title: 'Augusto Dos Santos',
   description:
-    "Junior Full Stack Developer specializing in modern web technologies. Expert in React, Node.js, TypeScript, and cloud development. Read my latest tech tutorials, project insights, and programming tips on web development, DevOps, and software engineering best practices.",
+    "Junior Full Stack Developer specializing in modern web technologies. Next.js, Node.js, TypeScript, and cloud development. Read my latest tech tutorials, project insights, and programming tips on web development, DevOps, and software engineering best practices.",
   href: 'https://www.cojocarudavid.me',
-  author: 'Cojocaru David',
+  author: 'Augusto Dos Santos',
   locale: 'en-US',
-  location: 'Romania',
-  email: 'contact@cojocarudavid.me'
+  location: 'Argentina',
+  email: 'dossantosaugusto36@gmail.com'
 }
 
 export const NAV_LINKS: SocialLink[] = [
@@ -20,33 +20,33 @@ export const NAV_LINKS: SocialLink[] = [
     href: '/projects',
     label: 'projects',
   },
-  {
-    href: '/blog',
-    label: 'blog',
-  },
+  // {
+  //   href: '/blog',
+  //   label: 'blog',
+  // },
 ]
 
 export const SOCIAL_LINKS: SocialLink[] = [
   {
-    href: 'https://github.com/cojocaru-david?ref=personal-website',
+    href: 'https://github.com/augustosz',
     label: 'GitHub',
   },
   {
-    href: 'mailto:contact@cojocarudavid.me',
+    href: 'mailto:dossantosaugusto36@gmail.com',
     label: 'Email',
   },
-  {
-    href: 'tel:+40764132266',
-    label: 'Phone',
-  },
-  {
-    href: 'https://www.instagram.com/david._.cojo?ref=personal-website',
-    label: 'Instagram',
-  },
-  {
-    href: '/rss.xml',
-    label: 'RSS',
-  },
+  // {
+  //   href: 'tel:+40764132266',
+  //   label: 'Phone',
+  // },
+  // {
+  //   href: 'https://www.instagram.com/david._.cojo?ref=personal-website',
+  //   label: 'Instagram',
+  // },
+  // {
+  //   href: '/rss.xml',
+  //   label: 'RSS',
+  // },
 ]
 
 export const ICON_MAP: IconMap = {

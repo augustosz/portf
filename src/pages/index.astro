@@ -14,7 +14,7 @@ const currentUrl = Astro.url;
 ---
 
 <Layout canonicalUrl={currentUrl}>
-  <PageHead slot="head" title="Junior Full Stack Developer" />
+  <PageHead slot="head" title="Desarrollador Full Stack Junior" />
   <section class="flex flex-col gap-y-12 px-4 py-8 sm:px-8 lg:px-16">
     <div
       class="flex flex-col items-center text-center sm:flex-row sm:items-start sm:gap-8 sm:text-left"
@@ -30,11 +30,11 @@ const currentUrl = Astro.url;
         >
           {SITE.title}
         </h1>
-        <div class="mt-4 flex items-center gap-2" aria-label="location">
+        <div class="mt-4 flex items-center gap-2" aria-label="ubicación">
           <span
             class="bg-primary text-primary-foreground ring-primary/30 rounded-full px-3 py-1 text-sm font-medium ring-1"
           >
-            I'm from
+            Soy de
           </span>
           <span class="flex items-center gap-1">
             <span class="text-foreground text-sm font-medium"> {SITE.location}</span>
@@ -57,7 +57,7 @@ const currentUrl = Astro.url;
             </svg>
           </span>
         </div>
-        <p class="text-md text-foreground mt-4 text-start font-sans" title="description" aria-label="description">
+        <p class="text-md text-foreground mt-4 text-start font-sans" title="descripción" aria-label="descripción">
           {SITE.description}
         </p>
       </div>
@@ -67,14 +67,14 @@ const currentUrl = Astro.url;
       <h2
         id="skills-title"
         class="font-custom text-foreground text-2xl font-bold"
-        title="skills"
-        aria-label="skills"
+        title="habilidades"
+        aria-label="habilidades"
         role="heading"
       >
-        Skills & Technologies
+        Habilidades y Tecnologías
       </h2>
-      <p class="text-muted-foreground text-sm" aria-label="skills description">
-        Here are some of the technologies I've been working with:
+      <p class="text-muted-foreground text-sm" aria-label="descripción de habilidades">
+        Aquí hay algunas de las tecnologías con las que he estado trabajando:
       </p>
       <div>
         <Skills client:load />
@@ -86,14 +86,13 @@ const currentUrl = Astro.url;
         <h2
           id="latest-posts-title"
           class="font-custom text-foreground text-2xl font-bold"
-          title="latest blog posts"
-          aria-label="latest blog posts"
+          title="últimas publicaciones del blog"
+          aria-label="últimas publicaciones del blog"
         >
-          Latest Blog Posts
+          Últimas Publicaciones del Blog
         </h2>
-        <p class="text-muted-foreground text-sm" aria-label="blog description">
-          Here are some of my latest blog posts. You can find more on my blog
-          page.
+        <p class="text-muted-foreground text-sm" aria-label="descripción del blog">
+          Aquí están algunas de mis últimas publicaciones del blog. Puedes encontrar más en mi página del blog.
         </p>
       </div>
       <ul class="flex flex-col gap-y-4">
@@ -105,12 +104,12 @@ const currentUrl = Astro.url;
           ))
         }
       </ul>
-      <div class="flex justify-center" aria-label="see all posts">
+      <div class="flex justify-center" aria-label="ver todas las publicaciones">
         <Link
           href="/blog"
           class={buttonVariants({ variant: 'ghost' }) + ' group'}
         >
-          See all posts <span
+          Ver todas las publicaciones <span
             class="ml-1.5 transition-transform group-hover:translate-x-1"
             >&rarr;</span
           >
