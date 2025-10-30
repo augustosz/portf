@@ -35,6 +35,11 @@ export const SOCIAL_LINKS: SocialLink[] = [
     href: 'mailto:dossantosaugusto36@gmail.com',
     label: 'Email',
   },
+  {
+    href: 'https://www.linkedin.com/in/augusto-dos-santos-a226622b6',
+    label: 'LinkedIn',
+  },
+
   // {
   //   href: 'tel:+40764132266',
   //   label: 'Phone',
@@ -56,6 +61,7 @@ export const ICON_MAP: IconMap = {
   Phone: 'lucide:phone',
   Email: 'lucide:mail',
   RSS: 'lucide:rss',
+  LinkedIn: 'lucide:linkedin',
 }
 
 export interface Category {
