@@ -1,0 +1,67 @@
+<svg width="800" height="600" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#1e293b"/>
+    </linearGradient>
+    <linearGradient id="card" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#334155" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#1e293b" stop-opacity="0.5"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="2.5" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="800" height="600" fill="url(#bg)"/>
+  
+  <!-- Header -->
+  <rect x="0" y="0" width="800" height="80" fill="#1e293b"/>
+  <text x="40" y="50" font-family="sans-serif" font-size="24" font-weight="bold" fill="#38bdf8">Crypto Tracker</text>
+  <rect x="500" y="25" width="260" height="30" rx="15" fill="#334155"/>
+  <circle cx="520" cy="40" r="8" fill="#94a3b8"/>
+  
+  <!-- Content Grid -->
+  <!-- Card 1: Bitcoin -->
+  <g transform="translate(40, 120)">
+    <rect width="220" height="140" rx="10" fill="url(#card)" stroke="#334155" stroke-width="1"/>
+    <circle cx="40" cy="40" r="20" fill="#f7931a"/>
+    <text x="70" y="35" font-family="sans-serif" font-size="18" font-weight="bold" fill="#f8fafc">Bitcoin</text>
+    <text x="70" y="55" font-family="sans-serif" font-size="14" fill="#94a3b8">BTC</text>
+    <text x="30" y="100" font-family="sans-serif" font-size="24" font-weight="bold" fill="#f8fafc">$45,230</text>
+    <text x="160" y="100" font-family="sans-serif" font-size="14" fill="#22c55e">+2.4%</text>
+  </g>
+  
+  <!-- Card 2: Ethereum -->
+  <g transform="translate(290, 120)">
+    <rect width="220" height="140" rx="10" fill="url(#card)" stroke="#334155" stroke-width="1"/>
+    <circle cx="40" cy="40" r="20" fill="#627eea"/>
+    <text x="70" y="35" font-family="sans-serif" font-size="18" font-weight="bold" fill="#f8fafc">Ethereum</text>
+    <text x="70" y="55" font-family="sans-serif" font-size="14" fill="#94a3b8">ETH</text>
+    <text x="30" y="100" font-family="sans-serif" font-size="24" font-weight="bold" fill="#f8fafc">$3,120</text>
+    <text x="160" y="100" font-family="sans-serif" font-size="14" fill="#ef4444">-1.2%</text>
+  </g>
+  
+  <!-- Card 3: Solana -->
+  <g transform="translate(540, 120)">
+    <rect width="220" height="140" rx="10" fill="url(#card)" stroke="#334155" stroke-width="1"/>
+    <circle cx="40" cy="40" r="20" fill="#14f195"/>
+    <text x="70" y="35" font-family="sans-serif" font-size="18" font-weight="bold" fill="#f8fafc">Solana</text>
+    <text x="70" y="55" font-family="sans-serif" font-size="14" fill="#94a3b8">SOL</text>
+    <text x="30" y="100" font-family="sans-serif" font-size="24" font-weight="bold" fill="#f8fafc">$120</text>
+    <text x="160" y="100" font-family="sans-serif" font-size="14" fill="#22c55e">+5.7%</text>
+  </g>
+  
+  <!-- Chart Placeholder -->
+  <g transform="translate(40, 300)">
+    <rect width="720" height="250" rx="10" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+    <text x="30" y="40" font-family="sans-serif" font-size="18" fill="#f8fafc">Market Overview</text>
+    <polyline points="30,200 100,180 170,210 240,150 310,170 380,120 450,140 520,80 590,100 660,50" fill="none" stroke="#38bdf8" stroke-width="3" filter="url(#glow)"/>
+    <line x1="30" y1="220" x2="690" y2="220" stroke="#334155" stroke-width="1"/>
+  </g>
+</svg>

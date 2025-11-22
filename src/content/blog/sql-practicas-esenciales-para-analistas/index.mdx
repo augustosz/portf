@@ -1,0 +1,131 @@
+---
+title: "SQL para Analistas: Prácticas Esenciales que Marcan la Diferencia"
+description: "SQL sigue siendo la herramienta fundamental para cualquier analista de datos. Exploramos las prácticas que separan a los analistas junior de los senior."
+date: 2025-11-18
+tags: ["sql", "database", "query-optimization"]
+---
+
+SQL es el lenguaje donde "viven" los analistas senior. A pesar del auge de Python y herramientas de BI, SQL sigue siendo la habilidad más demandada en análisis de datos. Pero hay una gran diferencia entre escribir queries que funcionan y escribir queries eficientes y mantenibles.
+
+## Más Allá del SELECT Básico
+
+Muchos analistas se quedan en el nivel básico de `SELECT * FROM tabla`. Sin embargo, las consultas del mundo real requieren un entendimiento más profundo.
+
+### 1. Optimización de Queries
+
+Una query mal optimizada puede tardar minutos en lugar de segundos:
+
+```sql
+-- ❌ Ineficiente
+SELECT *
+FROM ventas v
+WHERE YEAR(fecha_venta) = 2024;
+
+-- ✅ Optimizado (permite usar índices)
+SELECT *
+FROM ventas v
+WHERE fecha_venta >= '2024-01-01' 
+  AND fecha_venta < '2025-01-01';
+```
+
+**Por qué importa**: Aplicar funciones a columnas en el WHERE impide el uso de índices, haciendo que la base de datos escanee toda la tabla.
+
+### 2. CTEs para Legibilidad
+
+Los Common Table Expressions (CTEs) hacen que queries complejas sean más fáciles de entender y mantener:
+
+```sql
+-- Análisis de retención de clientes
+WITH primera_compra AS (
+    SELECT 
+        customer_id,
+        MIN(fecha_compra) as primera_fecha
+    FROM ventas
+    GROUP BY customer_id
+),
+compras_subsecuentes AS (
+    SELECT 
+        v.customer_id,
+        COUNT(*) as total_compras
+    FROM ventas v
+    INNER JOIN primera_compra pc 
+        ON v.customer_id = pc.customer_id
+    WHERE v.fecha_compra > pc.primera_fecha
+    GROUP BY v.customer_id
+)
+SELECT 
+    COUNT(DISTINCT pc.customer_id) as clientes_totales,
+    COUNT(DISTINCT cs.customer_id) as clientes_retenidos,
+    ROUND(100.0 * COUNT(DISTINCT cs.customer_id) / 
+          COUNT(DISTINCT pc.customer_id), 2) as tasa_retencion
+FROM primera_compra pc
+LEFT JOIN compras_subsecuentes cs 
+    ON pc.customer_id = cs.customer_id;
+```
+
+### 3. Window Functions
+
+Las funciones de ventana son poderosas pero subutilizadas:
+
+```sql
+-- Ranking de productos por categoría
+SELECT 
+    categoria,
+    producto,
+    ventas_totales,
+    RANK() OVER (PARTITION BY categoria ORDER BY ventas_totales DESC) as ranking,
+    ROUND(100.0 * ventas_totales / SUM(ventas_totales) OVER (PARTITION BY categoria), 2) as porcentaje_categoria
+FROM (
+    SELECT 
+        categoria,
+        producto,
+        SUM(monto) as ventas_totales
+    FROM ventas
+    GROUP BY categoria, producto
+) subquery
+ORDER BY categoria, ranking;
+```
+
+## Errores Comunes a Evitar
+
+### 1. No Considerar NULLs
+
+```sql
+-- ❌ Puede dar resultados inesperados
+SELECT COUNT(*) FROM clientes WHERE edad <> 25;
+
+-- ✅ Manejo explícito de NULLs
+SELECT COUNT(*) FROM clientes 
+WHERE edad <> 25 OR edad IS NULL;
+```
+
+### 2. Joins Implícitos
+
+```sql
+-- ❌ Difícil de leer y mantener
+SELECT *
+FROM tabla1, tabla2
+WHERE tabla1.id = tabla2.id;
+
+-- ✅ Explícito y claro
+SELECT *
+FROM tabla1
+INNER JOIN tabla2 ON tabla1.id = tabla2.id;
+```
+
+### 3. SELECT * en Producción
+
+Siempre especificá las columnas que necesitás. Esto mejora el rendimiento y hace que tu código sea más robusto ante cambios en el esquema.
+
+## Consejos Prácticos
+
+1. **Comentá tus queries complejas**: Tu yo del futuro te lo agradecerá
+2. **Usá nombres descriptivos**: `total_ventas_2024` es mejor que `t1`
+3. **Testeá con LIMIT primero**: Antes de ejecutar una query grande, probá con un subset
+4. **Aprendé a leer EXPLAIN**: Entender el plan de ejecución te hace un mejor analista
+
+## Conclusión
+
+SQL no es solo una herramienta - es una forma de pensar sobre datos. Dominar estas prácticas no solo hace que tus queries sean más rápidas, sino que te convierte en un analista más efectivo y valioso para tu equipo.
+
+**Próximo paso**: Practicá reescribiendo tus queries antiguas con estas técnicas. La diferencia en rendimiento y legibilidad te sorprenderá.

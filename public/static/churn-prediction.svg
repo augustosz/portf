@@ -1,0 +1,43 @@
+<svg width="800" height="600" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#4c1d95"/>
+      <stop offset="100%" stop-color="#2e1065"/>
+    </linearGradient>
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="4" stdDeviation="4" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="800" height="600" fill="url(#bg)"/>
+  
+  <!-- Card -->
+  <rect x="200" y="100" width="400" height="400" rx="20" fill="#ffffff" filter="url(#shadow)"/>
+  
+  <!-- Header -->
+  <text x="400" y="160" font-family="sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#1f2937">Predicción de Abandono</text>
+  <line x1="250" y1="180" x2="550" y2="180" stroke="#e5e7eb" stroke-width="2"/>
+  
+  <!-- Form Elements -->
+  <text x="250" y="220" font-family="sans-serif" font-size="14" fill="#6b7280">Antigüedad (meses)</text>
+  <rect x="250" y="230" width="300" height="10" rx="5" fill="#e5e7eb"/>
+  <circle cx="350" cy="235" r="8" fill="#8b5cf6"/>
+  
+  <text x="250" y="270" font-family="sans-serif" font-size="14" fill="#6b7280">Cargos Mensuales</text>
+  <rect x="250" y="280" width="300" height="35" rx="5" fill="#f3f4f6" stroke="#d1d5db"/>
+  <text x="260" y="303" font-family="sans-serif" font-size="14" fill="#374151">$70.00</text>
+  
+  <text x="250" y="340" font-family="sans-serif" font-size="14" fill="#6b7280">Tipo de Contrato</text>
+  <rect x="250" y="350" width="300" height="35" rx="5" fill="#f3f4f6" stroke="#d1d5db"/>
+  <text x="260" y="373" font-family="sans-serif" font-size="14" fill="#374151">Mes a Mes</text>
+  
+  <!-- Button -->
+  <rect x="250" y="420" width="300" height="40" rx="5" fill="#8b5cf6"/>
+  <text x="400" y="445" font-family="sans-serif" font-size="16" font-weight="bold" text-anchor="middle" fill="#ffffff">Predecir</text>
+  
+  <!-- Result -->
+  <rect x="220" y="520" width="360" height="60" rx="10" fill="#fee2e2" stroke="#ef4444"/>
+  <text x="400" y="545" font-family="sans-serif" font-size="16" font-weight="bold" text-anchor="middle" fill="#b91c1c">⚠️ ¡Ojo! Este cliente se va</text>
+  <text x="400" y="565" font-family="sans-serif" font-size="12" text-anchor="middle" fill="#b91c1c">Probabilidad: 85%</text>
+</svg>
