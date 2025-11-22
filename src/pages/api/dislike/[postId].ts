@@ -32,6 +32,13 @@ function checkRateLimit(fingerprintId: string): { allowed: boolean; error?: stri
 export const POST: APIRoute = async ({ params, request }) => {
   const { postId } = params;
 
+  if (!sql) {
+    return new Response(
+      JSON.stringify({ success: false, data: null, error: 'Database not configured' }),
+      { status: 503, headers: { 'Content-Type': 'application/json' } }
+    );
+  }
+
   // SECURITY CHECK: Validate origin/referer to prevent CSRF attacks
   const origin = request.headers.get('origin');
   const allowedOrigins = [

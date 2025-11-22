@@ -33,6 +33,13 @@ export const POST: APIRoute = async ({ params, request }) => {
   const { postId } = params;
   console.log('postId', postId);
 
+  if (!sql) {
+    return new Response(
+      JSON.stringify({ success: false, data: null, error: 'Database not configured' }),
+      { status: 503, headers: { 'Content-Type': 'application/json' } }
+    );
+  }
+
   // SECURITY CHECK: Validate origin/referer to prevent CSRF attacks
   const origin = request.headers.get('origin');
   const allowedOrigins = [
@@ -149,6 +156,13 @@ export const GET: APIRoute = async ({ params }) => {
     return new Response(
       JSON.stringify({ success: false, data: null, error: 'Invalid post ID' }),
       { status: 400, headers: { 'Content-Type': 'application/json' } }
+    );
+  }
+
+  if (!sql) {
+    return new Response(
+      JSON.stringify({ success: false, data: null, error: 'Database not configured' }),
+      { status: 503, headers: { 'Content-Type': 'application/json' } }
     );
   }
 
